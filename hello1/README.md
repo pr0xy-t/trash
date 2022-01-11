@@ -26,7 +26,7 @@ $ ldd ./hello
 	/lib64/ld-linux-x86-64.so.2 (0x00007ffa31ed8000)
 	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007ffa3193b000)
 ```
-- libstdc++.so.6, libgcc_s.so.1が目新しい。
+- libstdc++.so.6, libgcc_s.so.1が目新しい
 ### libstdc++.so.6
 - 何のファイル？
   - c++ standard library
@@ -81,7 +81,7 @@ $ find  /lib/x86_64-linux-gnu/ -name "*.so" -type f -perm -u+x  -or -name "*.so.
 - `ld-2.31.so`、`libc-2.31.so`、`libodbccr.so`、`libodbcinst.so`、`libodbc.so`、`libpthread-2.31.so`に実行権限が付いていた。通常であれば、共有ライブラリに実行権限は必要ない。それぞれ共有ライブラリファイルであると同時に実行可能ファイルであり、単体で実行すると理由が分かるに違いない！
 
 - `ld-2.31.so`は共有ライブラリ関連のことを調べるために使えるようだ。
-- また、shell scriptなどのプログラムやコマンドとして単体で使用されることもあるので、実行権限が付いていることは納得である。
+- また、shell scriptなどのプログラムやコマンドとして単体で使用されることもあるので、実行権限が付いていることは納得である
 ```
 $ /lib/x86_64-linux-gnu/ld-2.31.so 
 Usage: ld.so [OPTION]... EXECUTABLE-FILE [ARGS-FOR-PROGRAM...]
@@ -109,7 +109,7 @@ of this helper program; chances are you did not intend to run this program.
   --preload LIST        preload objects named in LIST
   
   ```
-#### lddコマンド(shell script)内でld-2.31.soが使われていたりする。
+#### lddコマンド(shell script)内でld-2.31.soが使われていたりする
 
 
 ```
@@ -160,7 +160,7 @@ $ /lib/x86_64-linux-gnu/libodbccr.so --help
 Segmentation fault (core dumped)
 ```
 #### セグフォ、セグフォ、セグフォ、、、！！
-#### 実行できないのでなぜ実行権限が付いているのだろう。 セグフォしかしないなら実行権限付けないで欲しいな。
+#### 実行できないのならなぜ実行権限が付いているのだろう。 セグフォしかしないなら実行権限付けないで欲しいな。
 #### 無駄に実行権限付けてると悪用できるバグが合った時に悪い人に悪用されかねない。
 #### odbcで調べると、これら共有ライブラリはデータベースに関連するものであると知った。
 
