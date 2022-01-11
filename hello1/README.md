@@ -35,7 +35,6 @@ $ ldd ./hello
 $ realpath /lib/x86_64-linux-gnu/libstdc++.so.6
 /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
 ```
-- 頻繁にアップデートされていそう
 
 - 定義されているシンボル情報を眺める
 
@@ -66,7 +65,7 @@ $ ldd /lib/x86_64-linux-gnu/libc.so.6
 ```
 $ nm -D --demangle --defined-only  /lib/x86_64-linux-gnu/libgcc_s.so.1  | less -N
 ```
-- \_Unwind_\*の関数が定義されている。c++の例外処理を定義している
+- \_Unwind_\*の関数が定義されている。c++の例外処理を定義していたりする
 ---
 ## どうでもよいこと
 - 共有ライブラリファイルであるが実行権限付いて、単体で実行できるものが共有ライブラリファイルが存在する。例えば、libc.soやld.soなど
